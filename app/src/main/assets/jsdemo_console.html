@@ -1,0 +1,36 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <script type="text/javascript">
+        function showToast(){
+            var json = JSON.stringify({"content":"js call native!"});
+            var requestUrl ="http://baidu.com";
+             console.log("jwgjsbridge:///request?url="+requestUrl+"&class=JSAndroidControl&method=showContentData&params="+
+             encodeURIComponent(json)+"&callId=1");
+        }
+
+        window.myjsbridge={
+            callbackFromNative:function(callId,callType,params){
+                alert("callback from native");
+                alert("callId = "+callId+" , callType = "+callType+" , params = "+params);
+            }
+        }
+
+         function closeActivity(){
+            var json = JSON.stringify({"content":"js call native!"});
+            var requestUrl ="http://baidu.com";
+            console.log("jwgjsbridge:///request?url="+requestUrl+"&class=JSAndroidControl&method=closeActivity&params="+
+            encodeURIComponent(json)+"&callId=1");
+        }
+
+
+
+
+  </script>
+</head>
+<body>
+<button onclick="showToast()">点击弹出Toast提示</button>
+<br><br><br>
+<button onclick="closeActivity()">关闭Activity</button>
+</body>
+</html>
